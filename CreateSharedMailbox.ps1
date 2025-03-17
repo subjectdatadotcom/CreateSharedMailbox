@@ -30,7 +30,7 @@ foreach ($mailbox in $mailboxes) {
         # Extract the local part before @ and append the new domain
         $firstPart = ($mailbox.UserPrincipalName -split "@")[0]
 
-        $newPrimarySmtpAddress = "$firstPart@autoscout24.com"
+        $newPrimarySmtpAddress = "$firstPart@<targettenant>.com"
 
         # Check if mailbox already exists
         $existingMailbox = Get-Mailbox -Identity $newPrimarySmtpAddress -ErrorAction SilentlyContinue
