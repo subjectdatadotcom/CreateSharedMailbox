@@ -18,7 +18,8 @@ Before running the script, ensure:
    - `UserPrincipalName` (original email address)
    - `DisplayName` (original display name)
    - `ArchiveStatus` (`Active` or `None`)
-   - `AutoExpandingArchiveEnabled` (`TRUE` or `FALSE`)
+   - `AutoExpandingArchiveEnabled` (`TRUE` or `FALSE`)   
+4. Replace `<targettenant>` with your tenant, for example: `contoso.microsoft.com`.
 
 ## Installation
 If the **Exchange Online Management Module** is not installed, run:
