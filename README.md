@@ -22,9 +22,9 @@ Before running the script, ensure:
 
 ## Installation
 If the **Exchange Online Management Module** is not installed, run:
-``powershell
+```powershell
 Install-Module -Name ExchangeOnlineManagement -Force
-
+```
 Usage
 Place your CSV file SharedMailboxes.csv in the same directory as the script.
 
@@ -33,14 +33,14 @@ Open PowerShell as an administrator and run the script:
 
 If prompted, sign in with your Exchange Online Admin credentials.
 
-Output
+## Output
 
-Success: Mailboxes are created successfully.
-Failures: Logged in SMB_failures.csv with error details.
-Already Existing Mailboxes: Logged in SMB_Existing_SMBs.csv.
+- Success: Mailboxes are created successfully.
+- Failures: Logged in SMB_failures.csv with error details.
+- Already Existing Mailboxes: Logged in SMB_Existing_SMBs.csv.
 
 
-Notes
-Ensure you have sufficient admin permissions to create mailboxes.
-The script automatically checks for existing mailboxes before creation.
-The script will prompt for Exchange Online admin credentials.
+## Notes
+- Ensure you have sufficient admin permissions to create mailboxes.
+- The script automatically checks for existing mailboxes before creation.
+- The script will prompt for Exchange Online admin credentials.
