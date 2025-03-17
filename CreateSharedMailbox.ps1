@@ -1,4 +1,37 @@
-﻿# Ensure the Exchange Management Shell module is loaded
+<#
+.SYNOPSIS
+This script automates the creation of shared mailboxes in Exchange Online using a CSV file.
+
+.DESCRIPTION
+The script first ensures that the `ExchangeOnlineManagement` module is installed and imported. It then connects to Exchange Online and reads mailbox details from a CSV file (`SharedMailboxes.csv`). 
+
+For each entry in the CSV file, the script:
+- Checks if the shared mailbox already exists.
+- If it exists, logs it in a separate file (`SMB_Existing_SMBs.csv`).
+- If it does not exist, creates a new shared mailbox with:
+  - A modified display name prefixed with "TR-".
+  - A primary SMTP address using the `targettenant.com` domain.
+  - Optional settings such as archive and auto-expanding archive (based on the CSV data).
+
+All failures encountered during mailbox creation are logged in `SMB_failures.csv`.
+
+Once the process is complete, the script disconnects from Exchange Online.
+
+.NOTES
+- The script requires administrative privileges in Exchange Online.
+- The `SharedMailboxes.csv` file must be in the same directory as the script.
+- Output files (`SMB_Existing_SMBs.csv` and `SMB_failures.csv`) will be saved in the same directory.
+- Ensure PowerShell execution policies allow the script to run.
+
+.AUTHOR
+SubjectData
+
+.EXAMPLE
+.\CreateSharedMailboxes.ps1
+This will execute the script, processing the 'SharedMailboxes.csv' file, connecting to Exchange Online, and generating reports on created and existing mailboxes.
+#>
+
+ # Ensure the Exchange Management Shell module is loaded
 if (-not (Get-Module -ListAvailable -Name ExchangeOnlineManagement)) {
     Install-Module -Name ExchangeOnlineManagement -Force
     Import-Module ExchangeOnlineManagement
